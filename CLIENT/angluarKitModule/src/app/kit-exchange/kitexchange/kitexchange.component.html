@@ -1,0 +1,70 @@
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header text-center"><strong>EXCHANGE KIT</strong></div>
+        <div class="card-body">
+            <form class="form-horizontal" action="" #exchangedata="ngForm" method="post">
+                <br>
+                <br>
+                <div class="form-group row">
+                    <label class="col-md-4 col-form-label" for=""> Old serial number</label>
+                    <div class="col-md-8">
+                        <input class="form-control " id="" type="text " name="oldserialNo" [(ngModel)]="oldSerialNo" placeholder="Enter old serial number here.. " required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-4 col-form-label" for="">New serial number</label>
+                    <div class="col-md-8">
+                        <input class="form-control " id="" type="text " name="newSerialNo" [(ngModel)]="newSerialNo" placeholder="Enter new serial number here.. " required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-4 col-form-label" for="">Remark</label>
+                    <div class="col-md-8">
+                        <textarea class="form-control " id="" name="remark" [(ngModel)]="remark" cols="30" rows="5" placeholder="please suggest remarks here..  " required></textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-md btn-primary float-right" type="submit" data-toggle="modal" data-target="#exchangeKitModal" data-backdrop="static" data-keyboard="false"> EXCHANGE</button>
+            <!-- <button class="btn btn-sm btn-warning " type="reset "> Reset</button> -->
+        </div>
+    </div>
+</div>
+
+<!-- modal start for Exchange kit section -->
+
+<div class="modal fade " id="exchangeKitModal" tabindex="1" role="dialog " aria-labelledby="exampleModalLabel" aria-hidden="true ">
+    <div class="modal-dialog modal-dialog-centered " role="document ">
+        <div class="modal-content ">
+            <div class="modal-header addheader ">
+                <h5 class="modal-title" id="ModalLabel">Review Kit Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close ">
+          <span aria-hidden="true ">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" action=" " method="post ">
+                    <div class="form-group row ">
+                        <label class="col-md-6 col-form-label text-right " for=" ">Old serial number :</label>
+                        <label class="col-md-6 col-form-label text-left" for=" ">{{oldSerialNo}}</label>
+                    </div>
+
+                    <div class="form-group row ">
+                        <label class="col-md-6 col-form-label text-right " for=" ">New serial number :</label>
+                        <label class="col-md-6 col-form-label text-left" for=" ">{{newSerialNo}}</label>
+                    </div>
+                    <div class="form-group row ">
+                        <label class="col-md-6 col-form-label text-right " for=" ">remarks :</label>
+                        <label class="col-md-6 col-form-label text-left" for=" ">{{remark}}</label>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer ">
+                <button type="button " class="btn btn-secondary " data-dismiss="modal">Close</button>
+                <button type="button " class="btn btn-primary" data-dismiss="modal" (click)="exchnagekit();">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

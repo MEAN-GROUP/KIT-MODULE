@@ -1,0 +1,109 @@
+<div class="container">
+    <div class="col-md-12 searchbar">
+        <div class="col-md-4 tsearchbar">
+
+        </div>
+        <div class="col-md-4 dsearchbar">
+            <div class="input-group">
+                <span class="input-group-prepend">
+                <button class="btn btn-primary" type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"width="20" height="20"viewBox="0 0 172 172"
+                        style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M64.5,14.33333c-27.6214,0 -50.16667,22.54527 -50.16667,50.16667c0,27.6214 22.54527,50.16667 50.16667,50.16667c12.52732,0 23.97256,-4.67249 32.7819,-12.31771l3.05143,3.05143v9.26628l40.03256,40.03256c3.95599,3.95599 10.37733,3.956 14.33333,0c3.956,-3.956 3.956,-10.37733 0,-14.33333l-40.03256,-40.03256h-9.26628l-3.05143,-3.05143c7.64521,-8.80934 12.31771,-20.25458 12.31771,-32.7819c0,-27.6214 -22.54527,-50.16667 -50.16667,-50.16667zM64.5,28.66667c19.87509,0 35.83333,15.95824 35.83333,35.83333c0,19.87509 -15.95825,35.83333 -35.83333,35.83333c-19.87509,0 -35.83333,-15.95825 -35.83333,-35.83333c0,-19.87509 15.95824,-35.83333 35.83333,-35.83333z"></path></g></g>
+                    </svg> Search     
+                </button>
+             </span>
+                <select class="form-control " id="kittype" name="status" [(ngModel)]="searchString" required>
+                <option value="" enable> All</option>
+                <option value="Available">Available</option>
+                <option value="Returned">Returned</option>
+                <option value="Allocated">Allocated</option>
+                <option value="Booked">Booked</option>
+             </select>
+            </div>
+        </div>
+    </div>
+    <br> <br>
+
+    <div class="card">
+        <div class="card-header text-center">
+            <strong> KIT LIST</strong>
+        </div>
+        <div class="card-body">
+            <table class="table table-responsive-md table-bordered table-striped table-sm">
+                <thead class="text-center">
+                    <tr>
+                        <th>SL NO</th>
+                        <th>SERIAL NO.</th>
+                        <th>KIT TYPE</th>
+                        <th>KIT PRICE</th>
+                        <th>STATUS</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    <tr *ngFor="let x of kitdata | filter : 'status' : searchString; index as i">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ x.serialNo }}</td>
+                        <td>{{ x.kitType }}</td>
+                        <td>{{ x.kitPrice }}</td>
+                        <td>{{ x.status }}</td>
+                        <td>
+                            <button class="btn btn-sm btn-danger" type="submit" data-toggle="modal" data-target="#deleteKitModal" data-backdrop="static" data-keyboard="false" (click)="viewDeleteDetail(x);"> Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <nav class="float-right ">
+                <ul class="pagination ">
+                    <li class="page-item "><a class="page-link " href="# ">Prev</a></li>
+                    <li class="page-item active "><a class="page-link " href="# ">1</a></li>
+                    <li class="page-item "><a class="page-link " href="# ">2</a></li>
+                    <li class="page-item "><a class="page-link " href="# ">3</a></li>
+                    <li class="page-item "><a class="page-link " href="# ">4</a></li>
+                    <li class="page-item "><a class="page-link " href="# ">Next</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- modal start for delete section -->
+<div class="modal fade" id="deleteKitModal" tabindex="1 " role="dialog " aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document1">
+        <div class="modal-content">
+            <div class="modal-header deleteheader">
+                <h5 class="modal-title" id="ModalLabel ">Delete Kit Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal " action=" " method="post ">
+                    <div class="form-group row ">
+                        <label class="col-md-6 col-form-label text-right " for=" ">Serial no. :</label>
+                        <label class="col-md-6 col-form-label " for=" ">{{viewDetail.serialNo}}</label>
+                    </div>
+
+                    <div class="form-group row ">
+                        <label class="col-md-6 col-form-label text-right " for=" ">Kit Type :</label>
+                        <label class="col-md-6 col-form-label " for=" ">{{viewDetail.kitType}}</label>
+                    </div>
+                    <div class="form-group row ">
+                        <label class="col-md-6 col-form-label text-right " for=" ">Kit Price :</label>
+                        <label class="col-md-6 col-form-label " for=" ">{{viewDetail.kitPrice}}</label>
+                    </div>
+                    <div class="form-group row ">
+                        <label class="col-md-6 col-form-label text-right " for=" ">Status :</label>
+                        <label class="col-md-6 col-form-label " for=" ">{{viewDetail.status}}</label>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button " class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button " class="btn btn-danger " (click)="delete(viewDetail.serialNo);">Remove</button>
+            </div>
+        </div>
+    </div>
+</div>

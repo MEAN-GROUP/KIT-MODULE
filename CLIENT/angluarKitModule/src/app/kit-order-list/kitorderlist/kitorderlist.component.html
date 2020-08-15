@@ -1,0 +1,220 @@
+<div class="container">
+    <div class="col-md-12 textbar textbar">
+
+        <div class="col-md-4 dtextbar">
+            <div class="input-group">
+                <span class="input-group-prepend">
+                <button class="btn btn-primary" type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"width="20" height="20"viewBox="0 0 172 172"
+                        style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M64.5,14.33333c-27.6214,0 -50.16667,22.54527 -50.16667,50.16667c0,27.6214 22.54527,50.16667 50.16667,50.16667c12.52732,0 23.97256,-4.67249 32.7819,-12.31771l3.05143,3.05143v9.26628l40.03256,40.03256c3.95599,3.95599 10.37733,3.956 14.33333,0c3.956,-3.956 3.956,-10.37733 0,-14.33333l-40.03256,-40.03256h-9.26628l-3.05143,-3.05143c7.64521,-8.80934 12.31771,-20.25458 12.31771,-32.7819c0,-27.6214 -22.54527,-50.16667 -50.16667,-50.16667zM64.5,28.66667c19.87509,0 35.83333,15.95824 35.83333,35.83333c0,19.87509 -15.95825,35.83333 -35.83333,35.83333c-19.87509,0 -35.83333,-15.95825 -35.83333,-35.83333c0,-19.87509 15.95824,-35.83333 35.83333,-35.83333z"></path></g></g>
+                    </svg> Search     
+                </button>
+             </span>
+                <input class="form-control" id="input1-group2" type="date" name="input1-group2" placeholder="YYYY-MM-DD" [(ngModel)]="searchString">
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="card">
+        <div class="card-header text-center">
+            <strong> KIT ORDER LIST</strong>
+        </div>
+        <div class="card-body">
+            <table class="table table-responsive-md table-bordered table-striped table-sm">
+                <thead class="text-center">
+                    <tr>
+                        <th>SL NO</th>
+                        <th>PATIENT ID</th>
+                        <th>KIT TYPE</th>
+                        <th>MOBILE NUMBER</th>
+                        <th>ORDER TIME</th>
+                        <th>PATIENT NAME</th>
+                        <th>PATIENT AGE</th>
+                        <th>DETAILS</th>
+                        <th>DELIVER</th>
+                        <th>CANCEL</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    <tr *ngFor="let x of orderdata | filter : 'dateTime' : searchString; index as i">
+                        <td>{{ i +1 }}</td>
+                        <td>{{x.patientId}}</td>
+                        <td>{{x.kitType}}</td>
+                        <td>{{x.mobile}}</td>
+                        <td>{{x.dateTime}}</td>
+                        <td>{{x.PatientName}}</td>
+                        <td>{{x.age}}</td>
+                        <td>
+                            <button class="btn btn-sm btn-info" type="submit" (click)="orderdetails(x);" data-toggle="modal" data-target="#orderdetails" data-backdrop="static" data-keyboard="false"> DETAILS</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" type="submit" (click)="orderdetails(x);" data-toggle="modal" data-target="#deleverykit" data-backdrop="static" data-keyboard="false"> DELIVER</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-danger" type="submit" data-toggle="modal" data-target="#cancelkit" data-backdrop="static" data-keyboard="false"> CANCEL</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <nav class="float-right">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<!-- modal start for Add kit section -->
+
+<div class="modal fade " id="orderdetails" tabindex="1 " role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered " role="document ">
+        <div class="modal-content ">
+            <div class="modal-header addheader ">
+                <h5 class="modal-title " id="editModalLabel ">Review order details</h5>
+                <button type="button " class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true ">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body ">
+                <form class="form-horizontal" action="" method="post">
+                    <div class="col-md-12">
+                        <img src="../../../assets/image/image4.jpg" alt="">
+                        <div class="form-group row">
+                            <label class="col-md-6 col-form-label text-right" for="">Patient id :</label>
+                            <label class="col-md-6 col-form-label" for="">{{viewdetail.patientId}}</label>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-6 col-form-label text-right" for="">Patient name :</label>
+                            <label class="col-md-6 col-form-label" for="">{{viewdetail.PatientName}}</label>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-6 col-form-label text-right" for="">Father name :</label>
+                            <label class="col-md-6 col-form-label" for="">{{viewdetail.fatherName}}</label>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-6 col-form-label text-right" for="">Kit type :</label>
+                            <label class="col-md-6 col-form-label" for="">{{viewdetail.kitType}}</label>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-6 col-form-label text-right" for="">Mobile :</label>
+                            <label class="col-md-6 col-form-label" for="">{{viewdetail.mobile}}</label>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-6 col-form-label text-right" for="">Time of order :</label>
+                            <label class="col-md-6 col-form-label" for="">{{viewdetail.dateTime}}</label>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-6 col-form-label text-right" for="">Longitude :</label>
+                            <label class="col-md-6 col-form-label" for="">{{viewdetail.longitude}}</label>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-6 col-form-label text-right" for="">Latitude :</label>
+                            <label class="col-md-6 col-form-label" for="">{{viewdetail.latitude}}</label>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-6 col-form-label text-right" for="">Age :</label>
+                            <label class="col-md-6 col-form-label" for="">{{viewdetail.age}}</label>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-6 col-form-label text-right" for="">Patient address :</label>
+                            <label class="col -md-6col-form-label" for="">{{viewdetail.address.street}},
+                                {{viewdetail.address.city}},{{viewdetail.address.pin}},{{viewdetail.address.country}}
+                            </label>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer ">
+                <button type="button" class="btn btn-secondary float-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#deleverykit" data-backdrop="static" data-keyboard="false">confirm</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal start for confirm kit section -->
+
+<div class="modal fade " id="deleverykit" tabindex="1 " role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered " role="document ">
+        <div class="modal-content ">
+            <div class="modal-header addheader ">
+                <h5 class="modal-title " id="editModalLabel ">Assign order</h5>
+                <button type="button " class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true ">&times;</span>
+        </button>
+            </div>
+            <form action="" method="post" #userdata="ngForm">
+                <div class="modal-body ">
+                    <div class="form-group row">
+                        <label class="col-md-6 col-form-label text-right" for="">Patient id :</label>
+                        <label class="col-md-6 col-form-label" for="">{{viewdetail.patientId}}</label>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-6 col-form-label text-right" for="">Patient name :</label>
+                        <label class="col-md-6 col-form-label" for="">{{viewdetail.PatientName}}</label>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-6 col-form-label text-right" for="">Mobile :</label>
+                        <label class="col-md-6 col-form-label" for="">{{viewdetail.mobile}}</label>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-6 col-form-label text-right" for="">Time of order :</label>
+                        <label class="col-md-6 col-form-label" for="">{{viewdetail.dateTime}}</label>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-6 col-form-label text-right" for="">Kit type :</label>
+                        <label class="col-md-6 col-form-label" for="">{{viewdetail.kitType}}</label>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-6 col-form-label text-right" for="">Patient address :</label>
+                        <label class="col -md-6col-form-label" for="">{{viewdetail.address.street}},
+                                {{viewdetail.address.city}}-{{viewdetail.address.pin}},{{viewdetail.address.country}}
+                         </label>
+                    </div>
+                    <div class="form-group ">
+                        <label class="col-md-12 col-form-label" for="">Delivery staff name & Employee Id list :</label>
+                        <select class="form-control " id="kittype" name="email" [(ngModel)]="data.email" required>
+                        <option *ngFor="let x of deliverydata"  value="{{x.email}}" >{{x.name}}-{{x.empId}}
+                        </option>
+                    </select>
+                    </div>
+                </div>
+                <div class="modal-footer ">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="adddeliveryorderlist()" type="submit">Confirm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- modal start for cancel kit section -->
+
+<div class="modal fade " id="cancelkit" tabindex="1 " role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered " role="document ">
+        <div class="modal-content ">
+            <div class="modal-header addheader ">
+                <h5 class="modal-title " id="editModalLabel ">Confirm order</h5>
+                <button type="button " class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true ">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body ">
+                <h4>Are you sure wants to cancel the order ?</h4>
+            </div>
+            <div class="modal-footer ">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>

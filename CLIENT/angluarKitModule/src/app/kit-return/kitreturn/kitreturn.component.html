@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header text-center"><strong>RETURN KIT</strong></div>
+        <div class="card-body">
+            <form class="form-horizontal" action="" #returndata="ngForm" method="post">
+                <br>
+                <br>
+                <div class="form-group row">
+                    <label class="col-md-4 col-form-label" for="">Serial no. :</label>
+                    <div class="col-md-8">
+                        <input class="form-control" id="" type="text " name="serialNo" [(ngModel)]="serialNo" placeholder=" Enter kit serial number ">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer ">
+
+            <button class="btn btn-md btn-primary float-right " type="submit" data-toggle="modal" data-target="#returnKitModal" data-backdrop="static" data-keyboard="false"> RETURN</button>
+
+        </div>
+    </div>
+</div>
+
+<!-- modal start for return kit section -->
+
+<div class="modal fade " id="returnKitModal" tabindex="1 " role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered " role="document ">
+        <div class="modal-content ">
+            <div class="modal-header addheader ">
+                <h5 class="modal-title " id="editModalLabel ">Review kit details</h5>
+                <button type="button " class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true ">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body ">
+                <form class="form-horizontal " action=" " method="post ">
+
+                    <div class="form-group row ">
+                        <label class="col-md-6 col-form-label text-right" for=" ">Serial number :</label>
+                        <label class="col-md-6 col-form-label text-left" for=" ">{{serialNo}}</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer ">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="onreturn();" data-dismiss="modal">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>

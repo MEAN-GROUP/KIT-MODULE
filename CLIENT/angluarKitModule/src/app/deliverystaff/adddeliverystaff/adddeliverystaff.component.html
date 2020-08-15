@@ -1,0 +1,89 @@
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header text-center"><strong>DELIVERY PERSON ENTRY FORM</strong></div>
+        <form class="form-horizontal" [formGroup]="deliverypersonForm" (ngSubmit)="adddeliveryperson()">
+            <div class="card-body">
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="name">Name :</label>
+                    <div class="col-md-9">
+                        <input class="form-control" id="" type="text" name="name" formControlName="name" placeholder="eg. John rambo">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="email">Email :</label>
+                    <div class="col-md-9">
+                        <input class="form-control" id="" type="email" name="email" formControlName="email" placeholder="eg. john@gmail.com" autocomplete="email">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="fathername"> Father name :</label>
+                    <div class="col-md-9">
+                        <input class="form-control" id="" type="text" name="fathername" formControlName="fathername" placeholder="eg. Alan rambo">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="date">Date of birth :</label>
+                    <div class="col-md-9">
+                        <input class="form-control" id="" type="date" name="dob" formControlName="dob" placeholder="date">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="licenceno"> License no. :</label>
+                    <div class="col-md-9">
+                        <input class="form-control" id="" type="text" name="licenseno" formControlName="licenseno" placeholder="eg. osfyeh778">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="mobileno"> Mobile number :</label>
+                    <div class="col-md-9">
+                        <input class="form-control" id="" type="number" name="mobileno" formControlName="mobileno" placeholder="eg. Alan rambo">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label">Gender</label>
+                    <div class="col-md-9 col-form-label">
+                        <div class="form-check form-check-inline mr-1">
+                            <input class="form-check-input" id="" type="radio" value="Male" formControlName="gender" name="gender">
+                            <label class="form-check-label" for="inline-radio1">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline mr-1">
+                            <input class="form-check-input" id="" type="radio" value="Female" formControlName="gender" name="gender">
+                            <label class="form-check-label" for="inline-radio2">Female</label>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <h5>Address</h5>
+                <hr>
+                <div formGroupName="address">
+                    <div class="form-group">
+                        <label for="street">Street :</label>
+                        <input class="form-control" id="street" name="street" type="text" formControlName="street" placeholder="Enter street name">
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-8">
+                            <label for="city">City :</label>
+                            <input class="form-control" id="city" name="city" type="text" formControlName="city" placeholder="Enter your city">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="postalcode">Postal Code :</label>
+                            <input class="form-control" id="postalcode" name="postalcode" formControlName="postalcode" type="text" placeholder="Postal Code">
+                        </div>
+                    </div>
+                    <!-- /.row-->
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <select class="form-control" id="country" name="country" formControlName="country">
+                            <option value="" disabled>--- select ---</option>
+                            <option value="India">India</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-md btn-secondary" type="reset"> Reset</button>
+                <button class="btn btn-md btn-primary float-right" type="submit"> Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

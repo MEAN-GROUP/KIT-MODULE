@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header card-primary text-center"><strong>ADD KIT</strong></div>
+        <form ass="form-horizontal" #userdata="ngForm" method=" post ">
+            <div class="card-body ">
+
+                <div class="form-group row ">
+                    <label class="col-md-3 col-form-label " for="kittype ">Kit type :</label>
+                    <div class="col-md-9 ">
+                        <select class="form-control " id="kittype " [(ngModel)]="data.kitType" name="kitType" required>
+                        <option value="" disabled>--select--</option>
+                        <option value="Standard">Standard</option>
+                        <option value="Economy">Economy</option>
+                        <option value="Premium">Premium</option>
+                      </select>
+                    </div>
+                </div>
+                <div class="form-group row ">
+                    <label class="col-md-3 col-form-label " for=" ">Kit serial no. : </label>
+                    <div class="col-md-9 ">
+                        <input class="form-control " id=" " type="text " name="serialNo" [(ngModel)]="data.serialNo" placeholder=" Enter Kit serial number.. " required>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer ">
+                <button class="btn btn-primary float-right " (click)="onadd();"> ADD</button>
+                <br>
+                <br>
+            </div>
+        </form>
+    </div>
+</div>
