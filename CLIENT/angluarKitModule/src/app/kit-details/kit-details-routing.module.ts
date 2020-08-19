@@ -7,7 +7,7 @@ import { KitdetailsComponent } from './kitdetails/kitdetails.component';
 
 
 const routes: Routes = [{path:"admin", children:[
-                        {path:"kitdetails", component:KitdetailsComponent},]}];
+                        {path:"kitdetails", component:KitdetailsComponent}]}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

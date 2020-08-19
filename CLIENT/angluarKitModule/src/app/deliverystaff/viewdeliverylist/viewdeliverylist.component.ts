@@ -14,15 +14,19 @@ viewDetail: any;
 serialno:any;
 searchString: string;
  deliveryempId: string;
- show: boolean = false;
 
   constructor(private router: Router, private view: KitService) { }
  
   ngOnInit(): void {
+   console.log(this.deliveryempId);
+    this.view.getViewDeliveryOrderList(this.deliveryempId).subscribe((result) => {
+    console.log(result)
+        this.deliveryorderdata = JSON.parse(JSON.stringify(result))
+    });
+   
     this.viewDetail = {}
   }
   vieworder(){
-    this.show = true;
     console.log(this.deliveryempId);
     this.view.getViewDeliveryOrderList(this.deliveryempId).subscribe((result) => {
     console.log(result)

@@ -6,7 +6,7 @@ import { ViewdeliverylistComponent } from './viewdeliverylist/viewdeliverylist.c
 
 
 
-const routes: Routes = [{path:"admin", children:[
+const routes: Routes = [{path:"admin/:username", children:[
                         {path:"adddeliverystaff", component:AddDeliverystaffComponent},
                         {path:"listdeliverystaff", component:ListdeliverystaffComponent},
                         {path:"Viewdeliverylist", component:ViewdeliverylistComponent}]}];

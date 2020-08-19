@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule,mainroute } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddKitModule } from './add-kit/add-kit.module';
 import { KitdetailsModule } from './kit-details/kitdetails.module';
@@ -30,6 +30,7 @@ import { DeliverystaffModule } from './deliverystaff/deliverystaff.module';
     KitheaderComponent,
     KitfooterComponent,
     TestheaderComponent,
+    mainroute
   ],
   imports: [
     BrowserModule,
